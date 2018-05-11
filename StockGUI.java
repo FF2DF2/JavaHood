@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
+package stockgui;
+
 import java.util.Collections;
 import java.util.Arrays;
 
-//package StockGUI;
 /**
  *
- * @author HERO
+ * @author Unravel
  */
 public class StockGUI extends javax.swing.JFrame {
 
@@ -29,58 +32,39 @@ public class StockGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
-        sortTickerButtonAsc = new javax.swing.JButton();
-        sortSharesButtonAsc = new javax.swing.JButton();
-        clearButton = new javax.swing.JButton();
         tickerScrollPanel = new javax.swing.JScrollPane();
         tickerList = new javax.swing.JTextArea();
         sharesScrollPanel = new javax.swing.JScrollPane();
         sharesList = new javax.swing.JTextArea();
-        sortTickerButtonDesc = new javax.swing.JButton();
-        sortSharesButtonDesc = new javax.swing.JButton();
         equityScrollPanel = new javax.swing.JScrollPane();
         equityList = new javax.swing.JTextArea();
+        sortTickerButtonAsc = new javax.swing.JButton();
+        sortTickerButtonDesc = new javax.swing.JButton();
+        sortSharesButtonAsc = new javax.swing.JButton();
+        sortSharesButtonDesc = new javax.swing.JButton();
         sortEquityButtonAsc = new javax.swing.JButton();
         sortEquityButtonDesc = new javax.swing.JButton();
-        stocksLabel = new javax.swing.JLabel();
-        stocksPortfolioLabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        displayTotalEquity = new javax.swing.JTextPane();
-        displayTotalEquityButton = new javax.swing.JButton();
-        priceWatchlistScrollPanel = new javax.swing.JScrollPane();
-        priceWatchlist = new javax.swing.JTextArea();
-        sortPriceButtonAsc = new javax.swing.JButton();
-        sortPriceButtonDesc = new javax.swing.JButton();
-        sortTickerButtonAsc1 = new javax.swing.JButton();
-        clearButton1 = new javax.swing.JButton();
+        stocskLabel = new javax.swing.JLabel();
+        clearWatchlistButton = new javax.swing.JButton();
         tickerWatchlistScrollPanel = new javax.swing.JScrollPane();
         tickerWatchlist = new javax.swing.JTextArea();
-        sortTickerButtonDesc1 = new javax.swing.JButton();
-        stocksLabel1 = new javax.swing.JLabel();
+        priceWatchlistScrollPanel = new javax.swing.JScrollPane();
+        priceWatchlist = new javax.swing.JTextArea();
+        sortTickerWatchlistButtonAsc = new javax.swing.JButton();
+        sortTickerWatchlistButtonDesc = new javax.swing.JButton();
+        sortPriceWatchlistButtonAsc = new javax.swing.JButton();
+        sortPriceWatchlistButtonDesc = new javax.swing.JButton();
+        WatchlistLabel = new javax.swing.JLabel();
+        MyPortfolioLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        totalEquityPanel = new javax.swing.JTextPane();
+        sellStocksButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        sortTickerButtonAsc.setText("Sort Ticker [Ascending]");
-        sortTickerButtonAsc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-
-                sortTickerButtonAscActionPerformed(evt);
-            }
-        });
-
-        sortSharesButtonAsc.setText("Sort Shares [Ascending]");
-        sortSharesButtonAsc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sortSharesButtonAscActionPerformed(evt);
-            }
-        });
-
-        clearButton.setText("Clear / Reset");
-        clearButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clearButtonActionPerformed(evt);
-            }
-        });
 
         tickerScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         tickerScrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -92,21 +76,53 @@ public class StockGUI extends javax.swing.JFrame {
 
         tickerList.setColumns(20);
         tickerList.setRows(5);
-        tickerList.setText("NVDA\nNFLX\nTSLA\nNXTD\nIGC");
+        tickerList.setText("IGC\nNFLX\nNVDA\nNXTD\nTSLA");
         tickerScrollPanel.setViewportView(tickerList);
 
-        sharesScrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         sharesScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        sharesScrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        sharesScrollPanel.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                sharesScrollPanelPropertyChange(evt);
+            }
+        });
 
         sharesList.setColumns(20);
         sharesList.setRows(5);
-        sharesList.setText("33\n15\n22\n10\n42");
+        sharesList.setText("10\n15\n22\n33\n42\n");
         sharesScrollPanel.setViewportView(sharesList);
+
+        equityScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        equityScrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        equityScrollPanel.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                equityScrollPanelPropertyChange(evt);
+            }
+        });
+
+        equityList.setColumns(20);
+        equityList.setRows(5);
+        equityList.setText("19.4\n4897.5\n6687.56\n8223.6\n25.62");
+        equityScrollPanel.setViewportView(equityList);
+
+        sortTickerButtonAsc.setText("Sort Ticker [Ascending]");
+        sortTickerButtonAsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortTickerButtonAscActionPerformed(evt);
+            }
+        });
 
         sortTickerButtonDesc.setText("Sort Ticker [Descending]");
         sortTickerButtonDesc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sortTickerButtonDescActionPerformed(evt);
+            }
+        });
+
+        sortSharesButtonAsc.setText("Sort Shares [Ascending]");
+        sortSharesButtonAsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortSharesButtonAscActionPerformed(evt);
             }
         });
 
@@ -116,15 +132,6 @@ public class StockGUI extends javax.swing.JFrame {
                 sortSharesButtonDescActionPerformed(evt);
             }
         });
-
-        equityScrollPanel.setToolTipText("");
-        equityScrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        equityScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-        equityList.setColumns(20);
-        equityList.setRows(5);
-        equityList.setText("8223.60\n4897.50\n6687.56\n19.40\n25.62");
-        equityScrollPanel.setViewportView(equityList);
 
         sortEquityButtonAsc.setText("Sort Equity [Ascending]");
         sortEquityButtonAsc.addActionListener(new java.awt.event.ActionListener() {
@@ -140,58 +147,17 @@ public class StockGUI extends javax.swing.JFrame {
             }
         });
 
-        stocksLabel.setText("Stocks");
+        stocskLabel.setText("Stocks");
 
-        stocksPortfolioLabel.setText("My Portfolio");
-
-        jScrollPane1.setViewportView(displayTotalEquity);
-
-        displayTotalEquityButton.setText("Display Total Equity");
-        displayTotalEquityButton.addActionListener(new java.awt.event.ActionListener() {
+        clearWatchlistButton.setText("Clear Watchlist");
+        clearWatchlistButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                displayTotalEquityButtonActionPerformed(evt);
+                clearWatchlistButtonActionPerformed(evt);
             }
         });
 
-        priceWatchlistScrollPanel.setToolTipText("");
-        priceWatchlistScrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        priceWatchlistScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-        priceWatchlist.setColumns(20);
-        priceWatchlist.setRows(5);
-        priceWatchlist.setText("249.20\n326.50\n303.98\n1.94\n0.61");
-        priceWatchlistScrollPanel.setViewportView(priceWatchlist);
-
-        sortPriceButtonAsc.setText("Sort Price [Ascending]");
-        sortPriceButtonAsc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sortPriceButtonAscActionPerformed(evt);
-            }
-        });
-
-        sortPriceButtonDesc.setText("Sort Price [Descending]");
-        sortPriceButtonDesc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sortPriceButtonDescActionPerformed(evt);
-            }
-        });
-
-        sortTickerButtonAsc1.setText("Sort Ticker [Ascending]");
-        sortTickerButtonAsc1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sortTickerButtonAsc1ActionPerformed(evt);
-            }
-        });
-
-        clearButton1.setText("Clear / Reset");
-        clearButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clearButton1ActionPerformed(evt);
-            }
-        });
-
-        tickerWatchlistScrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         tickerWatchlistScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        tickerWatchlistScrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         tickerWatchlistScrollPanel.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 tickerWatchlistScrollPanelPropertyChange(evt);
@@ -200,17 +166,65 @@ public class StockGUI extends javax.swing.JFrame {
 
         tickerWatchlist.setColumns(20);
         tickerWatchlist.setRows(5);
-        tickerWatchlist.setText("NVDA\nNFLX\nTSLA\nNXTD\nIGC");
+        tickerWatchlist.setText("IGC\nNFLX\nNVDA\nNXTD\nTSLA");
         tickerWatchlistScrollPanel.setViewportView(tickerWatchlist);
 
-        sortTickerButtonDesc1.setText("Sort Ticker [Descending]");
-        sortTickerButtonDesc1.addActionListener(new java.awt.event.ActionListener() {
+        priceWatchlistScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        priceWatchlistScrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        priceWatchlist.setColumns(20);
+        priceWatchlist.setRows(5);
+        priceWatchlist.setText("0.62\n325.24\n255.44\n1.92\n300.15\n\n\n");
+        priceWatchlistScrollPanel.setViewportView(priceWatchlist);
+
+        sortTickerWatchlistButtonAsc.setText("Sort Ticker [Ascending]");
+        sortTickerWatchlistButtonAsc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sortTickerButtonDesc1ActionPerformed(evt);
+                sortTickerWatchlistButtonAscActionPerformed(evt);
             }
         });
 
-        stocksLabel1.setText("Watchlist");
+        sortTickerWatchlistButtonDesc.setText("Sort Ticker [Descending]");
+        sortTickerWatchlistButtonDesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortTickerWatchlistButtonDescActionPerformed(evt);
+            }
+        });
+
+        sortPriceWatchlistButtonAsc.setText("Sort Price [Ascending]");
+        sortPriceWatchlistButtonAsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortPriceWatchlistButtonAscActionPerformed(evt);
+            }
+        });
+
+        sortPriceWatchlistButtonDesc.setText("Sort Price [Descending]");
+        sortPriceWatchlistButtonDesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortPriceWatchlistButtonDescActionPerformed(evt);
+            }
+        });
+
+        WatchlistLabel.setText("Watchlist");
+
+        MyPortfolioLabel.setText("My Portfolio");
+
+        jScrollPane1.setViewportView(totalEquityPanel);
+
+        sellStocksButton.setText("Sell All Stocks");
+        sellStocksButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sellStocksButtonActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Sort Stocks Last Added");
+
+        jButton2.setText("Sort Stocks First Added");
+
+        jButton3.setText("Sort Watchlist Last Added");
+
+        jButton4.setText("Sort Watchlist First Added");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -220,70 +234,75 @@ public class StockGUI extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(stocksPortfolioLabel)
-                                                                .addGap(203, 203, 203)
-                                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGap(5, 5, 5)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                                .addComponent(clearButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                .addComponent(sortTickerButtonAsc1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                .addComponent(stocksLabel1)
-                                                                                                .addComponent(sortTickerButtonDesc1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                                                                        .addGap(5, 5, 5)
-                                                                                                        .addComponent(tickerWatchlistScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                                        .addGap(18, 18, 18)
-                                                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                                                .addComponent(priceWatchlistScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                                                                                                .addComponent(sortPriceButtonAsc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                                                .addComponent(sortPriceButtonDesc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
-                                                .addContainerGap(25, Short.MAX_VALUE))
+                                                .addComponent(MyPortfolioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(80, 80, 80)
+                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
+                                                .addGap(8, 8, 8)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(sortTickerButtonAsc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(stocksLabel)
-                                                        .addComponent(sortTickerButtonDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                                .addGap(1, 1, 1)
-                                                                .addComponent(tickerScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(sortSharesButtonAsc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(sortSharesButtonDesc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(sharesScrollPanel))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(sortEquityButtonDesc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(equityScrollPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(sortEquityButtonAsc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(27, 27, 27))))
+                                                        .addComponent(WatchlistLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(tickerWatchlistScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(sortTickerWatchlistButtonDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(sortTickerWatchlistButtonAsc, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(priceWatchlistScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(sortPriceWatchlistButtonDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(sortPriceWatchlistButtonAsc, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(sellStocksButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(tickerScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                                                        .addComponent(sortTickerButtonDesc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(sortTickerButtonAsc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                                .addComponent(stocskLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                .addComponent(sharesScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                                                .addComponent(sortSharesButtonAsc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(sortSharesButtonDesc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                .addComponent(sortEquityButtonDesc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(equityScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                                                .addComponent(sortEquityButtonAsc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(displayTotalEquityButton)
-                                .addGap(262, 262, 262))
+                                .addComponent(clearWatchlistButton, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addContainerGap()
-                                                .addComponent(stocksPortfolioLabel))
+                                                .addComponent(MyPortfolioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
-                                                .addGap(21, 21, 21)
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(displayTotalEquityButton)
-                                .addGap(127, 127, 127)
-                                .addComponent(stocksLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGap(25, 25, 25)
+                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(100, 100, 100)
+                                                .addComponent(stocskLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jButton2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jButton1)
+                                                .addGap(7, 7, 7)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(sortTickerButtonAsc)
                                         .addComponent(sortSharesButtonAsc)
@@ -294,45 +313,91 @@ public class StockGUI extends javax.swing.JFrame {
                                         .addComponent(sortSharesButtonDesc)
                                         .addComponent(sortEquityButtonDesc))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(sharesScrollPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                                        .addComponent(tickerScrollPanel, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(equityScrollPanel, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(sharesScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                        .addComponent(equityScrollPanel)
+                                        .addComponent(tickerScrollPanel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(clearButton)
-                                .addGap(99, 99, 99)
-                                .addComponent(stocksLabel1)
+                                .addComponent(sellStocksButton)
+                                .addGap(48, 48, 48)
+                                .addComponent(WatchlistLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(priceWatchlistScrollPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(jButton4)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jButton3))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                        .addComponent(sortTickerWatchlistButtonAsc)
+                                                                        .addComponent(sortPriceWatchlistButtonAsc))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                        .addComponent(sortTickerWatchlistButtonDesc)
+                                                                        .addComponent(sortPriceWatchlistButtonDesc))))
+                                                .addGap(13, 13, 13)
+                                                .addComponent(tickerWatchlistScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(sortTickerButtonAsc1)
-                                        .addComponent(sortPriceButtonAsc))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(sortTickerButtonDesc1)
-                                        .addComponent(sortPriceButtonDesc))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(tickerWatchlistScrollPanel, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(priceWatchlistScrollPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(clearButton1)
-                                .addGap(35, 35, 35))
+                                .addComponent(clearWatchlistButton)
+                                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>
 
-    private void tickerScrollPanelPropertyChange(java.beans.PropertyChangeEvent evt) {
-        // Adding the scrolling code to enable both panels to scroll in tandem
-        tickerScrollPanel.setVerticalScrollBar(sharesScrollPanel.getVerticalScrollBar());
-        //tickerScrollPanel.setVerticalScrollBar(equityScrollPanel.getVerticalScrollBar());
-    }
+    private void sortSharesButtonAscActionPerformed(java.awt.event.ActionEvent evt) {
+        // Create the arrays that split elements at new lines
+        String ticker[] = tickerList.getText().split("\n");
+        String shares[] = sharesList.getText().split("\n");
+        String equityStr[] = equityList.getText().split("\n");
+        // Create doubles array
+        double equityDbl[] = new double[equityStr.length];
+        // populate the array
+        for(int d = 0; d < equityDbl.length; d++)
+        {
+            equityDbl[d] = Double.parseDouble(equityStr[d]);
+        } // end for
 
-    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // clear text
+
+// Have the arrays. Clear the text areas
         tickerList.setText("");
         sharesList.setText("");
         equityList.setText("");
+
+        // Sort the arrays
+        for(int x = 0; x < ticker.length; x++)
+        {
+            for(int y = 0; y < ticker.length-1; y++)
+            {
+                if(shares[y].compareTo(shares[y+1]) > 0)
+                {
+                    String a = ticker[y];
+                    ticker[y] = ticker[y+1];
+                    ticker[y+1] = a;
+                    // sort the Shares
+                    String n = shares[y];
+                    shares[y] = shares[y+1];
+                    shares[y+1] = n;
+
+                    double d = equityDbl[y];
+                    equityDbl[y] = equityDbl[y+1];
+                    equityDbl[y+1] = d;
+                } // end if
+            } // end for
+        } // end for
+        // Display the now sorted arrays
+
+        for(int a = 0; a < ticker.length; a++)
+        {
+            tickerList.append(ticker[a]+ "\n");
+            sharesList.append(shares[a]+ "\n");
+            // Convert the doubles back to strings and display
+            equityList.append(String.valueOf(equityDbl[a])+ "\n");
+        } // end for
+        // repeat for the shares
     }
 
     private void sortTickerButtonAscActionPerformed(java.awt.event.ActionEvent evt) {
@@ -388,7 +453,7 @@ public class StockGUI extends javax.swing.JFrame {
         // repeat for the shares
     }
 
-    private void sortSharesButtonAscActionPerformed(java.awt.event.ActionEvent evt) {
+    private void sortEquityButtonAscActionPerformed(java.awt.event.ActionEvent evt) {
         // Create the arrays that split elements at new lines
         String ticker[] = tickerList.getText().split("\n");
         String shares[] = sharesList.getText().split("\n");
@@ -401,7 +466,6 @@ public class StockGUI extends javax.swing.JFrame {
             equityDbl[d] = Double.parseDouble(equityStr[d]);
         } // end for
 
-
 // Have the arrays. Clear the text areas
         tickerList.setText("");
         sharesList.setText("");
@@ -412,7 +476,7 @@ public class StockGUI extends javax.swing.JFrame {
         {
             for(int y = 0; y < ticker.length-1; y++)
             {
-                if(shares[y].compareTo(shares[y+1]) > 0)
+                if((equityDbl[y]) > (equityDbl[y+1]))
                 {
                     String a = ticker[y];
                     ticker[y] = ticker[y+1];
@@ -435,7 +499,7 @@ public class StockGUI extends javax.swing.JFrame {
             tickerList.append(ticker[a]+ "\n");
             sharesList.append(shares[a]+ "\n");
             // Convert the doubles back to strings and display
-            equityList.append(String.valueOf(equityDbl[a])+ "\n");
+            equityList.append(String.valueOf(equityDbl[a]) + "\n");
         } // end for
         // repeat for the shares
     }
@@ -504,57 +568,6 @@ public class StockGUI extends javax.swing.JFrame {
         }
     }
 
-    private void sortEquityButtonAscActionPerformed(java.awt.event.ActionEvent evt) {
-        // Create the arrays that split elements at new lines
-        String ticker[] = tickerList.getText().split("\n");
-        String shares[] = sharesList.getText().split("\n");
-        String equityStr[] = equityList.getText().split("\n");
-        // Create doubles array
-        double equityDbl[] = new double[equityStr.length];
-        // populate the array
-        for(int d = 0; d < equityDbl.length; d++)
-        {
-            equityDbl[d] = Double.parseDouble(equityStr[d]);
-        } // end for
-
-// Have the arrays. Clear the text areas
-        tickerList.setText("");
-        sharesList.setText("");
-        equityList.setText("");
-
-        // Sort the arrays
-        for(int x = 0; x < ticker.length; x++)
-        {
-            for(int y = 0; y < ticker.length-1; y++)
-            {
-                if((equityDbl[y]) > (equityDbl[y+1]))
-                {
-                    String a = ticker[y];
-                    ticker[y] = ticker[y+1];
-                    ticker[y+1] = a;
-                    // sort the Shares
-                    String n = shares[y];
-                    shares[y] = shares[y+1];
-                    shares[y+1] = n;
-
-                    double d = equityDbl[y];
-                    equityDbl[y] = equityDbl[y+1];
-                    equityDbl[y+1] = d;
-                } // end if
-            } // end for
-        } // end for
-        // Display the now sorted arrays
-
-        for(int a = 0; a < ticker.length; a++)
-        {
-            tickerList.append(ticker[a]+ "\n");
-            sharesList.append(shares[a]+ "\n");
-            // Convert the doubles back to strings and display
-            equityList.append(String.valueOf(equityDbl[a]) + "\n");
-        } // end for
-        // repeat for the shares
-    }
-
     private void sortEquityButtonDescActionPerformed(java.awt.event.ActionEvent evt) {
         // Create the arrays that split elements at new lines
         String ticker[] = tickerList.getText().split("\n");
@@ -587,96 +600,27 @@ public class StockGUI extends javax.swing.JFrame {
         } // end for
     }
 
-    private void displayTotalEquityButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        double total;
-        double subTotal;
-        total = Double.parseDouble(equityList.getText());
+    private void tickerScrollPanelPropertyChange(java.beans.PropertyChangeEvent evt) {
+        // Adding the scrolling code to enable both panels to scroll in tandem
+        tickerScrollPanel.setVerticalScrollBar(sharesScrollPanel.getVerticalScrollBar());
+        //tickerScrollPanel.setVerticalScrollBar(equityScrollPanel.getVerticalScrollBar());
     }
 
-    private void sortPriceButtonAscActionPerformed(java.awt.event.ActionEvent evt) {
-        // Create the arrays that split elements at new lines
-        String ticker[] = tickerWatchlist.getText().split("\n");
-        //String shares[] = sharesList.getText().split("\n");
-        String equityStr[] = priceWatchlist.getText().split("\n");
-        // Create doubles array
-        double equityDbl[] = new double[equityStr.length];
-        // populate the array
-        for(int d = 0; d < equityDbl.length; d++)
-        {
-            equityDbl[d] = Double.parseDouble(equityStr[d]);
-        } // end for
-
-// Have the arrays. Clear the text areas
+    private void clearWatchlistButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // clear text
         tickerWatchlist.setText("");
-        //sharesList.setText("");
         priceWatchlist.setText("");
-
-        // Sort the arrays
-        for(int x = 0; x < ticker.length; x++)
-        {
-            for(int y = 0; y < ticker.length-1; y++)
-            {
-                if((equityDbl[y]) > (equityDbl[y+1]))
-                {
-                    String a = ticker[y];
-                    ticker[y] = ticker[y+1];
-                    ticker[y+1] = a;
-                    // sort the Shares
-                    //String n = shares[y];
-                    // shares[y] = shares[y+1];
-                    //shares[y+1] = n;
-
-                    double d = equityDbl[y];
-                    equityDbl[y] = equityDbl[y+1];
-                    equityDbl[y+1] = d;
-                } // end if
-            } // end for
-        } // end for
-        // Display the now sorted arrays
-
-        for(int a = 0; a < ticker.length; a++)
-        {
-            tickerWatchlist.append(ticker[a]+ "\n");
-            // sharesList.append(shares[a]+ "\n");
-            // Convert the doubles back to strings and display
-            priceWatchlist.append(String.valueOf(equityDbl[a]) + "\n");
-        } // end for
-        // repeat for the shares
     }
 
-    private void sortPriceButtonDescActionPerformed(java.awt.event.ActionEvent evt) {
-        // Create the arrays that split elements at new lines
-        String ticker[] = tickerWatchlist.getText().split("\n");
-        //String shares[] = sharesList.getText().split("\n");
-        String equityStr[] = priceWatchlist.getText().split("\n");
-        // Create doubles array
-        Double[] equityDbl = new Double[equityStr.length];
-        // populate the array
-        for(int d = 0; d < equityDbl.length; d++)
-        {
-            equityDbl[d] = Double.parseDouble(equityStr[d]);
-        } // end for
-
-
-// Have the arrays. Clear the text areas
-        tickerWatchlist.setText("");
-        // sharesList.setText("");
-        priceWatchlist.setText("");
-
-        // sort arrays in reverse order
-        Arrays.sort(equityDbl, Collections.reverseOrder());
-
-        // Display the now sorted arrays
-        for(int a = 0; a < ticker.length; a++)
-        {
-            tickerWatchlist.append(ticker[a]+ "\n");
-            //sharesList.append(shares[a]+ "\n");
-            // Convert the doubles back to strings and display
-            priceWatchlist.append(String.valueOf(equityDbl[a])+ "\n");
-        }
+    private void sharesScrollPanelPropertyChange(java.beans.PropertyChangeEvent evt) {
+        // TODO add your handling code here:
     }
 
-    private void sortTickerButtonAsc1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void equityScrollPanelPropertyChange(java.beans.PropertyChangeEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void sortTickerWatchlistButtonAscActionPerformed(java.awt.event.ActionEvent evt) {
         // Create the arrays that split elements at new lines
         String ticker[] = tickerWatchlist.getText().split("\n");
         //String shares[] = sharesList.getText().split("\n");
@@ -729,19 +673,11 @@ public class StockGUI extends javax.swing.JFrame {
         // repeat for the shares
     }
 
-    private void clearButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void tickerWatchlistScrollPanelPropertyChange(java.beans.PropertyChangeEvent evt) {
-        tickerWatchlistScrollPanel.setVerticalScrollBar(priceWatchlistScrollPanel.getVerticalScrollBar());
-    }
-
-    private void sortTickerButtonDesc1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void sortTickerWatchlistButtonDescActionPerformed(java.awt.event.ActionEvent evt) {
         // Create the arrays that split elements at new lines
-        String ticker[] = tickerList.getText().split("\n");
-        String shares[] = sharesList.getText().split("\n");
-        String equityStr[] = equityList.getText().split("\n");
+        String ticker[] = tickerWatchlist.getText().split("\n");
+        //String shares[] = sharesList.getText().split("\n");
+        String equityStr[] = priceWatchlist.getText().split("\n");
         // Create doubles array
         double equityDbl[] = new double[equityStr.length];
         // populate the array
@@ -767,6 +703,100 @@ public class StockGUI extends javax.swing.JFrame {
             // Convert the doubles back to strings and display
             priceWatchlist.append(String.valueOf(equityDbl[a])+ "\n");
         } // end for
+    }
+
+    private void sortPriceWatchlistButtonAscActionPerformed(java.awt.event.ActionEvent evt) {
+        // Create the arrays that split elements at new lines
+        String ticker[] = tickerWatchlist.getText().split("\n");
+        //String shares[] = sharesList.getText().split("\n");
+        String equityStr[] = priceWatchlist.getText().split("\n");
+        // Create doubles array
+        double equityDbl[] = new double[equityStr.length];
+        // populate the array
+        for(int d = 0; d < equityDbl.length; d++)
+        {
+            equityDbl[d] = Double.parseDouble(equityStr[d]);
+        } // end for
+
+// Have the arrays. Clear the text areas
+        tickerWatchlist.setText("");
+        //sharesList.setText("");
+        priceWatchlist.setText("");
+
+        // Sort the arrays
+        for(int x = 0; x < ticker.length; x++)
+        {
+            for(int y = 0; y < ticker.length-1; y++)
+            {
+                if((equityDbl[y]) > (equityDbl[y+1]))
+                {
+                    String a = ticker[y];
+                    ticker[y] = ticker[y+1];
+                    ticker[y+1] = a;
+                    // sort the Shares
+                    //String n = shares[y];
+                    // shares[y] = shares[y+1];
+                    //shares[y+1] = n;
+
+                    double d = equityDbl[y];
+                    equityDbl[y] = equityDbl[y+1];
+                    equityDbl[y+1] = d;
+                } // end if
+            } // end for
+        } // end for
+        // Display the now sorted arrays
+
+        for(int a = 0; a < ticker.length; a++)
+        {
+            tickerWatchlist.append(ticker[a]+ "\n");
+            // sharesList.append(shares[a]+ "\n");
+            // Convert the doubles back to strings and display
+            priceWatchlist.append(String.valueOf(equityDbl[a]) + "\n");
+        } // end for
+        // repeat for the shares
+    }
+
+    private void sortPriceWatchlistButtonDescActionPerformed(java.awt.event.ActionEvent evt) {
+        // Create the arrays that split elements at new lines
+        String ticker[] = tickerWatchlist.getText().split("\n");
+        //String shares[] = sharesList.getText().split("\n");
+        String equityStr[] = priceWatchlist.getText().split("\n");
+        // Create doubles array
+        Double[] equityDbl = new Double[equityStr.length];
+        // populate the array
+        for(int d = 0; d < equityDbl.length; d++)
+        {
+            equityDbl[d] = Double.parseDouble(equityStr[d]);
+        } // end for
+
+
+// Have the arrays. Clear the text areas
+        tickerWatchlist.setText("");
+        // sharesList.setText("");
+        priceWatchlist.setText("");
+
+        // sort arrays in reverse order
+        Arrays.sort(equityDbl, Collections.reverseOrder());
+
+        // Display the now sorted arrays
+        for(int a = 0; a < ticker.length; a++)
+        {
+            tickerWatchlist.append(ticker[a]+ "\n");
+            //sharesList.append(shares[a]+ "\n");
+            // Convert the doubles back to strings and display
+            priceWatchlist.append(String.valueOf(equityDbl[a])+ "\n");
+        }
+    }
+
+    private void tickerWatchlistScrollPanelPropertyChange(java.beans.PropertyChangeEvent evt) {
+        tickerWatchlistScrollPanel.setVerticalScrollBar(priceWatchlistScrollPanel.getVerticalScrollBar());
+    }
+
+    private void sellStocksButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // clear text
+        tickerList.setText("");
+        sharesList.setText("");
+        equityList.setText("");
     }
 
     /**
@@ -805,33 +835,36 @@ public class StockGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
-    private javax.swing.JButton clearButton;
-    private javax.swing.JButton clearButton1;
-    private javax.swing.JTextPane displayTotalEquity;
-    private javax.swing.JButton displayTotalEquityButton;
+    private javax.swing.JLabel MyPortfolioLabel;
+    private javax.swing.JLabel WatchlistLabel;
+    private javax.swing.JButton clearWatchlistButton;
     private javax.swing.JTextArea equityList;
     private javax.swing.JScrollPane equityScrollPanel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea priceWatchlist;
     private javax.swing.JScrollPane priceWatchlistScrollPanel;
+    private javax.swing.JButton sellStocksButton;
     private javax.swing.JTextArea sharesList;
     private javax.swing.JScrollPane sharesScrollPanel;
     private javax.swing.JButton sortEquityButtonAsc;
     private javax.swing.JButton sortEquityButtonDesc;
-    private javax.swing.JButton sortPriceButtonAsc;
-    private javax.swing.JButton sortPriceButtonDesc;
+    private javax.swing.JButton sortPriceWatchlistButtonAsc;
+    private javax.swing.JButton sortPriceWatchlistButtonDesc;
     private javax.swing.JButton sortSharesButtonAsc;
     private javax.swing.JButton sortSharesButtonDesc;
     private javax.swing.JButton sortTickerButtonAsc;
-    private javax.swing.JButton sortTickerButtonAsc1;
     private javax.swing.JButton sortTickerButtonDesc;
-    private javax.swing.JButton sortTickerButtonDesc1;
-    private javax.swing.JLabel stocksLabel;
-    private javax.swing.JLabel stocksLabel1;
-    private javax.swing.JLabel stocksPortfolioLabel;
+    private javax.swing.JButton sortTickerWatchlistButtonAsc;
+    private javax.swing.JButton sortTickerWatchlistButtonDesc;
+    private javax.swing.JLabel stocskLabel;
     private javax.swing.JTextArea tickerList;
     private javax.swing.JScrollPane tickerScrollPanel;
     private javax.swing.JTextArea tickerWatchlist;
     private javax.swing.JScrollPane tickerWatchlistScrollPanel;
+    private javax.swing.JTextPane totalEquityPanel;
     // End of variables declaration
 }
