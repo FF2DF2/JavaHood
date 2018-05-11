@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cis44project;
-
 import java.util.Collections;
 import java.util.Arrays;
 
-
+//package StockGUI;
 /**
  *
  * @author HERO
@@ -65,6 +63,7 @@ public class StockGUI extends javax.swing.JFrame {
         sortTickerButtonAsc.setText("Sort Ticker [Ascending]");
         sortTickerButtonAsc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+
                 sortTickerButtonAscActionPerformed(evt);
             }
         });
@@ -83,6 +82,7 @@ public class StockGUI extends javax.swing.JFrame {
             }
         });
 
+        tickerScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         tickerScrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         tickerScrollPanel.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -96,6 +96,7 @@ public class StockGUI extends javax.swing.JFrame {
         tickerScrollPanel.setViewportView(tickerList);
 
         sharesScrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        sharesScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         sharesList.setColumns(20);
         sharesList.setRows(5);
@@ -118,6 +119,7 @@ public class StockGUI extends javax.swing.JFrame {
 
         equityScrollPanel.setToolTipText("");
         equityScrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        equityScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         equityList.setColumns(20);
         equityList.setRows(5);
@@ -153,6 +155,7 @@ public class StockGUI extends javax.swing.JFrame {
 
         priceWatchlistScrollPanel.setToolTipText("");
         priceWatchlistScrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        priceWatchlistScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         priceWatchlist.setColumns(20);
         priceWatchlist.setRows(5);
@@ -188,6 +191,7 @@ public class StockGUI extends javax.swing.JFrame {
         });
 
         tickerWatchlistScrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        tickerWatchlistScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         tickerWatchlistScrollPanel.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 tickerWatchlistScrollPanelPropertyChange(evt);
@@ -730,7 +734,7 @@ public class StockGUI extends javax.swing.JFrame {
     }
 
     private void tickerWatchlistScrollPanelPropertyChange(java.beans.PropertyChangeEvent evt) {
-        // TODO add your handling code here:
+        tickerWatchlistScrollPanel.setVerticalScrollBar(priceWatchlistScrollPanel.getVerticalScrollBar());
     }
 
     private void sortTickerButtonDesc1ActionPerformed(java.awt.event.ActionEvent evt) {
