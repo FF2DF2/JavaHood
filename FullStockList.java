@@ -34,6 +34,7 @@ public class FullStockList
                         new Stock("Wells Fargo",  "WFC", 52.41, 132),
                         new Stock("Marathon Oil",  "MRO", 19.72, 15),
                         new Stock("Petroleo Brasileiro ADR",  "PBR", 13.69, 6),
+                        new Stock("Telsa Inc",  "TSLA", 301.06, 3),
                         new Stock("Weatherford International",  "WFT", 2.97, 12),
                         new Stock("Freeport-McMoRan",  "FCX", 15.42, 34),
                         new Stock("Parsley Energy Cl A",  "PE", 31.92, 22),
