@@ -5,6 +5,7 @@ public class Stock
     private String name;
     private String ticker;
     private double price;
+    private int numberOfShares;
 
     public Stock()
     {
@@ -13,11 +14,12 @@ public class Stock
         price = 0.0;
     }
 
-    public Stock(String name, String ticker, double price)
+    public Stock(String name, String ticker, double price, int numberOfShares)
     {
         this.name = name;
         this.ticker = ticker;
         this.price = price;
+        this.numberOfShares = numberOfShares;
     }
 
     public String getName()
@@ -40,6 +42,11 @@ public class Stock
         return ticker;
     }
 
+    public int getNumberOfShares()
+    {
+        return numberOfShares;
+    }
+
     public void setTicker(String ticker)
     {
         this.ticker = ticker;
@@ -48,6 +55,11 @@ public class Stock
     public void setPrice(Double price)
     {
         this.price = price;
+    }
+
+    public double getEquity()
+    {
+        return price * numberOfShares;
     }
 
     @Override
