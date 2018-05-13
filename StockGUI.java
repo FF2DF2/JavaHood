@@ -17,7 +17,7 @@ import java.awt.event.*;
  */
 public class StockGUI extends javax.swing.JFrame {
     FullStockList fullStockList;
-    PurchasedStockList purchasedStocks;
+   
     StockQueue stockQueue;
     //Stock stock;
 
@@ -26,7 +26,7 @@ public class StockGUI extends javax.swing.JFrame {
      */
     public StockGUI() {
         fullStockList = new FullStockList();
-        purchasedStocks = new PurchasedStockList();
+    
         initComponents();
         
         // Sync Stock Scrollbars in tandem
@@ -81,6 +81,7 @@ public class StockGUI extends javax.swing.JFrame {
         StockNameLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setForeground(new java.awt.Color(0, 0, 0));
 
         sortTickerButtonAsc.setText("Sort Ticker [Ascending]");
         sortTickerButtonAsc.addActionListener(new java.awt.event.ActionListener() {
@@ -233,6 +234,49 @@ public class StockGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(WatchlistScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TickerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(priceWatchlistScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(priceLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(removeWatchlistButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addWatchListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(StockNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(49, 49, 49)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(clearButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(sortTickerButtonAsc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(sortTickerButtonDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tickerScrollPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(sortSharesButtonDesc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(sharesScrollPanel, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(sortSharesButtonAsc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(sortEquityButtonDesc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(equityScrollPanel, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(sortEquityButtonAsc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(stocksLabel)
+                                .addComponent(WatchlistLabel)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -241,48 +285,7 @@ public class StockGUI extends javax.swing.JFrame {
                         .addGap(53, 53, 53)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(displayTotalEquityScrollPanel)
-                            .addComponent(displayTotalEquityButton, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(48, 48, 48)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(WatchlistScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(TickerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(priceWatchlistScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(priceLabel))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(removeWatchlistButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(addWatchListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(StockNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(clearButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(sortTickerButtonAsc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(sortTickerButtonDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tickerScrollPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(sortSharesButtonDesc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(sharesScrollPanel, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(sortSharesButtonAsc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(sortEquityButtonDesc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(equityScrollPanel, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(sortEquityButtonAsc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(stocksLabel)
-                                    .addComponent(WatchlistLabel))))))
+                            .addComponent(displayTotalEquityButton, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -294,7 +297,7 @@ public class StockGUI extends javax.swing.JFrame {
                 .addComponent(displayTotalEquityScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(displayTotalEquityButton)
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
                 .addComponent(stocksLabel)
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -307,32 +310,31 @@ public class StockGUI extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(sortTickerButtonDesc)
                         .addComponent(sortSharesButtonDesc)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(sharesScrollPanel, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tickerScrollPanel, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(equityScrollPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(clearButton)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(StockNameLabel)
-                                .addGap(40, 40, 40))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addWatchListButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(removeWatchlistButton)
-                        .addGap(28, 28, 28))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addComponent(WatchlistLabel)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(TickerLabel)
-                            .addComponent(priceLabel))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(priceLabel)
+                                .addComponent(StockNameLabel)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(priceWatchlistScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -342,9 +344,24 @@ public class StockGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
+    private void priceWatchlistScrollPanelPropertyChange(java.beans.PropertyChangeEvent evt) {                                                         
+        // TODO add your handling code here:
+    }                                                        
+
+    private void sortTickerButtonDescActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+        fullStockList.sortByTickerDescending();
+        tickerList.setText(fullStockList.getStockTickers());
+        sharesList.setText(fullStockList.getShares());
+        equityList.setText(fullStockList.getEquity());
+    }                                                    
+
+    private void sharesScrollPanelPropertyChange(java.beans.PropertyChangeEvent evt) {                                                 
+        // TODO add your handling code here:
+    }                                                
+
     private void tickerScrollPanelPropertyChange(java.beans.PropertyChangeEvent evt) {                                                 
         // Sync Stock Scrollbars in tandem
-       
+
     }                                                
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
@@ -354,6 +371,13 @@ public class StockGUI extends javax.swing.JFrame {
         equityList.setText("");
     }                                           
 
+    private void sortSharesButtonAscActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+        fullStockList.sortByShares();
+        tickerList.setText(fullStockList.getStockTickers());
+        sharesList.setText(fullStockList.getShares());
+        equityList.setText(fullStockList.getEquity());
+    }                                                   
+
     private void sortTickerButtonAscActionPerformed(java.awt.event.ActionEvent evt) {                                                    
         fullStockList.sortByTicker();
         tickerList.setText(fullStockList.getStockTickers());
@@ -361,19 +385,27 @@ public class StockGUI extends javax.swing.JFrame {
         equityList.setText(fullStockList.getEquity());
     }                                                   
 
-    private void sortSharesButtonAscActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-   fullStockList.sortByShares();
-        tickerList.setText(fullStockList.getStockTickers());
-        sharesList.setText(fullStockList.getShares());
-        equityList.setText(fullStockList.getEquity());
+    private void WatchlistScrollPanelPropertyChange(java.beans.PropertyChangeEvent evt) {                                                    
+        //
     }                                                   
 
-    private void sortTickerButtonDescActionPerformed(java.awt.event.ActionEvent evt) {                                                     
-       fullStockList.sortByTickerDescending();
+    private void displayTotalEquityButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                         
+        displayTotalEquity.setText(fullStockList.getTotalEquity());
+    }                                                        
+
+    private void sortEquityButtonDescActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+        fullStockList.sortByEquityDescending();
         tickerList.setText(fullStockList.getStockTickers());
         sharesList.setText(fullStockList.getShares());
         equityList.setText(fullStockList.getEquity());
     }                                                    
+
+    private void sortEquityButtonAscActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+        fullStockList.sortByEquity();
+        tickerList.setText(fullStockList.getStockTickers());
+        sharesList.setText(fullStockList.getShares());
+        equityList.setText(fullStockList.getEquity());
+    }                                                   
 
     private void sortSharesButtonDescActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         fullStockList.sortBySharesDescending();
@@ -382,42 +414,11 @@ public class StockGUI extends javax.swing.JFrame {
         equityList.setText(fullStockList.getEquity());
     }                                                    
 
-    private void sortEquityButtonAscActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-       fullStockList.sortByEquity();
-        tickerList.setText(fullStockList.getStockTickers());
-        sharesList.setText(fullStockList.getShares());
-        equityList.setText(fullStockList.getEquity());
-    }                                                   
-
-    private void sortEquityButtonDescActionPerformed(java.awt.event.ActionEvent evt) {                                                     
-      fullStockList.sortByEquityDescending();
-        tickerList.setText(fullStockList.getStockTickers());
-        sharesList.setText(fullStockList.getShares());
-        equityList.setText(fullStockList.getEquity());
-    }                                                    
-
-    private void displayTotalEquityButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                         
-         displayTotalEquity.setText(fullStockList.getTotalEquity());
-    }                                                        
-
-    private void sharesScrollPanelPropertyChange(java.beans.PropertyChangeEvent evt) {                                                 
-        // TODO add your handling code here:
-    }                                                
-
-    private void WatchlistScrollPanelPropertyChange(java.beans.PropertyChangeEvent evt) {                                                    
-      //
-    }                                                   
-
-    private void priceWatchlistScrollPanelPropertyChange(java.beans.PropertyChangeEvent evt) {                                                         
-        // TODO add your handling code here:
-    }                                                        
-
     private void removeWatchlistButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                      
 
     }                                                     
 
     private void addWatchListButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                   
-    
 
     }                                                  
 
