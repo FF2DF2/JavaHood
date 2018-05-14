@@ -113,8 +113,7 @@ public class FullStockList
                         new Stock("Bristol-Myers Squibb",  "BMY", 51.33, 3),
                         new Stock("U.S. Bancorp",  "USB", 50.34, 3),
                         new Stock("Johnson&Johnson",  "JNJ", 124.19, 1),
-
-
+                        new Stock("Netflix",  "NFLX", 326.46, 9)
                 }; // end allStocks declaration
 
     }
