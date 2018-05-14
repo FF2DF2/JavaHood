@@ -11,21 +11,28 @@ import java.util.Arrays;
 
 import java.awt.*;
 import java.awt.event.*;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 /**
  *
  * @author HERO
  */
 public class StockGUI extends javax.swing.JFrame {
+    // create a default list model
+    DefaultListModel dlm2 = new DefaultListModel();
+   
+
     FullStockList fullStockList;
    
     StockQueue stockQueue;
-    //Stock stock;
-
+    
     /**
      * Creates new form StockGUI
      */
     public StockGUI() {
         fullStockList = new FullStockList();
+        stockQueue = new StockQueue();
     
         initComponents();
         
@@ -68,14 +75,16 @@ public class StockGUI extends javax.swing.JFrame {
         WatchlistLabel = new javax.swing.JLabel();
         displayTotalEquityScrollPanel = new javax.swing.JScrollPane();
         displayTotalEquity = new javax.swing.JTextPane();
-        TickerLabel = new javax.swing.JLabel();
-        priceLabel = new javax.swing.JLabel();
-        addWatchListButton = new javax.swing.JButton();
-        StockNameLabel = new javax.swing.JLabel();
+        clearQueueButton = new javax.swing.JButton();
+        q1Label = new javax.swing.JLabel();
+        q2Label = new javax.swing.JLabel();
+        dequeueSelectedStockButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTickerList = new javax.swing.JList<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jPriceList = new javax.swing.JList<>();
+        q2_List = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        q1_List = new javax.swing.JList<>();
+        enqueueQ1ListButton = new javax.swing.JButton();
+        enqueueQ2Button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(new java.awt.Color(0, 0, 0));
@@ -177,234 +186,46 @@ public class StockGUI extends javax.swing.JFrame {
 
         displayTotalEquityScrollPanel.setViewportView(displayTotalEquity);
 
-        TickerLabel.setText("Ticker");
-
-        priceLabel.setText("Price (USD)");
-
-        addWatchListButton.setText("Add");
-        addWatchListButton.addActionListener(new java.awt.event.ActionListener() {
+        clearQueueButton.setText("Clear Q2");
+        clearQueueButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addWatchListButtonActionPerformed(evt);
+                clearQueueButtonActionPerformed(evt);
             }
         });
 
-        StockNameLabel.setText("Add to Stocks");
+        q1Label.setText("Q1");
 
-        jTickerList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "BABA",
-                "BAC",
-                "P" ,
-                "GE" ,
-                "F" ,
-                "T" ,
-                "SWN",
-                "MDR",
-                "ABEV",
-                "NOK" ,
-                "S" ,
-                "TWTR" ,
-                "TEVA",
-                "VALE" ,
-                "AKS" ,
-                "PFE" ,
-                "KKR",
-                "WFC",
-                "MRO" ,
-                "PBR"  ,
-                "TSLA"  ,
-                "WFT"  ,
-                "FCX"  ,
-                "PE"  ,
-                "FDC"  ,
-                "JCP"  ,
-                "RIG"  ,
-                "KMI"  ,
-                "ECA"  ,
-                "FLR"  ,
-                "AIG"  ,
-                "C"  ,
-                "ZAYO",
-                "JPM"  ,
-                "NWL"  ,
-                "CVS"  ,
-                "X"  ,
-                "ITUB" ,
-                "VER"  ,
-                "WPX"  ,
-                "DNR"  ,
-                "MS"  ,
-                "ORCL" ,
-                "VZ"  ,
-                "SQ"  ,
-                "KO"  ,
-                "CLF"  ,
-                "BW"  ,
-                "OAS"  ,
-                "NLY"  ,
-                "NRG"  ,
-                "DIS"  ,
-                "XOM"  ,
-                "TSM"  ,
-                "AUY"  ,
-                "APRN"  ,
-                "RF"  ,
-                "VST"  ,
-                "SYY"  ,
-                "CBS"  ,
-                "KGC"  ,
-                "MGM"  ,
-                "HBI"  ,
-                "CNP"  ,
-                "NBR"  ,
-                "ESV"  ,
-                "PG"  ,
-                "CTL"  ,
-                "MRK"  ,
-                "MET"  ,
-                "CX"  ,
-                "CX"  ,
-                "DWDP" ,
-                "CAH"  ,
-                "IBN"  ,
-                "HST"  ,
-                "JNPR"  ,
-                "KEY"  ,
-                "WMT"  ,
-                "SHAK"  ,
-                "M"  ,
-                "CRC" ,
-                "WMB"  ,
-                "BWP"  ,
-                "MO"  ,
-                "GM"  ,
-                "HP"  ,
-                "HPQ" ,
-                "VIPS" ,
-                "DVN"  ,
-                "ABX"  ,
-                "HAL"  ,
-                "KR"  ,
-                "CPE"  ,
-                "NFX"  ,
-                "GIS"  ,
-                "COP"  ,
-                "HPE"  ,
-                "BMY"  ,
-                "USB"  ,
-                "JNJ"  ,
-                "NFLX"};
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jTickerList);
+        q2Label.setText("Q2");
 
-        jPriceList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] prices = { "188.89",
-                "29.30",
-                "6.89",
-                "14.10",
-                "10.79",
-                "11.36",
-                "3.05",
-                "32.14",
-                "4.03",
-                "6.66",
-                "6.33",
-                "6.10",
-                "5.28",
-                "31.04",
-                "17.83",
-                "14.08",
-                "4.53",
-                "34.84",
-                "23.00",
-                "52.41",
-                "19.72",
-                "13.69",
-                "301.06",
-                "2.97",
-                "15.42",
-                "31.92",
-                "19.08",
-                "2.89",
-                "12.08",
-                "16.11",
-                "13.16",
-                "45.76",
-                "52.84",
-                "67.94",
-                "32.97",
-                "108.43",
-                "27.65",
-                "63.10",
-                "34.52",
-                "13.44",
-                "6.94",
-                "17.78",
-                "3.40",
-                "51.40",
-                "45.71",
-                "48.19",
-                "49.10",
-                "42.36",
-                "7.69",
-                "2.65",
-                "11.22",
-                "10.35",
-                "33.30",
-                "101.15",
-                "76.90",
-                "38.59",
-                "2.93",
-                "2.44",
-                "18.72",
-                "23.01",
-                "62.29",
-                "53.17",
-                "4.03",
-                "31.86",
-                "16.81",
-                "26.39",
-                "7.54",
-                "5.81",
-                "72.43",
-                "18.49",
-                "57.75",
-                "46.23",
-                "5.96",
-                "64.47",
-                "53.01",
-                "8.47",
-                "19.84",
-                "25.66",
-                "19.70",
-                "87.53",
-                "55.95",
-                "31.24",
-                "31.58",
-                "26.19",
-                "9.56",
-                "56.26",
-                "36.71",
-                "21.68",
-                "15.75",
-                "37.87",
-                "13.47",
-                "52.19",
-                "24.14",
-                "13.55",
-                "27.34",
-                "42.54",
-                "66.86",
-                "17.21",
-                "51.33",
-                "50.34",
-                "124.19",
-                "326.46"};
-            public int getSize() { return prices.length; }
-            public String getElementAt(int i) { return prices[i]; }
+        dequeueSelectedStockButton.setText("Dequeue Selected Stock");
+        dequeueSelectedStockButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dequeueSelectedStockButtonActionPerformed(evt);
+            }
         });
-        jScrollPane3.setViewportView(jPriceList);
+
+        jScrollPane1.setViewportView(q2_List);
+
+        q1_List.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                q1_ListMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(q1_List);
+
+        enqueueQ1ListButton.setText("Enqueue Q1 with Stocks");
+        enqueueQ1ListButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enqueueQ1ListButtonActionPerformed(evt);
+            }
+        });
+
+        enqueueQ2Button.setText("Enqueue Q2 with Selected Stock");
+        enqueueQ2Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enqueueQ2ButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -415,65 +236,69 @@ public class StockGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(stocksPortfolioLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(displayTotalEquityScrollPanel)
-                            .addComponent(displayTotalEquityButton, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(49, 49, 49)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(clearButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(19, 19, 19)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(WatchlistLabel)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(sortTickerButtonAsc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(sortTickerButtonDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tickerScrollPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(sortSharesButtonDesc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(sharesScrollPanel, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(sortSharesButtonAsc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(sortEquityButtonDesc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(equityScrollPanel, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(sortEquityButtonAsc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                        .addComponent(q1Label, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(enqueueQ1ListButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(enqueueQ2Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(clearQueueButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(dequeueSelectedStockButton, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(q2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(clearButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(tickerScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(sortTickerButtonDesc, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                                        .addComponent(sortTickerButtonAsc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGap(18, 18, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 332, Short.MAX_VALUE)
+                                            .addComponent(sortEquityButtonDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(10, 10, 10))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(sortSharesButtonAsc, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(sortEquityButtonAsc, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(sortSharesButtonDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(sharesScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(equityScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGap(0, 0, Short.MAX_VALUE))))))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
+                            .addGap(23, 23, 23)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(stocksLabel)
-                                .addComponent(WatchlistLabel))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(TickerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(141, 141, 141))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(priceLabel)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addWatchListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(StockNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(17, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(displayTotalEquityScrollPanel)
+                                    .addComponent(displayTotalEquityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(stocksLabel)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(stocksPortfolioLabel)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(displayTotalEquityScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(displayTotalEquityButton)
-                .addGap(19, 19, 19)
+                .addGap(25, 25, 25)
                 .addComponent(stocksLabel)
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -481,12 +306,11 @@ public class StockGUI extends javax.swing.JFrame {
                     .addComponent(sortSharesButtonAsc)
                     .addComponent(sortEquityButtonAsc))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sortEquityButtonDesc, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(sortTickerButtonDesc)
-                        .addComponent(sortSharesButtonDesc)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sortTickerButtonDesc)
+                    .addComponent(sortSharesButtonDesc)
+                    .addComponent(sortEquityButtonDesc))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(sharesScrollPanel, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tickerScrollPanel, javax.swing.GroupLayout.Alignment.LEADING)
@@ -495,20 +319,26 @@ public class StockGUI extends javax.swing.JFrame {
                 .addComponent(clearButton)
                 .addGap(18, 18, 18)
                 .addComponent(WatchlistLabel)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TickerLabel)
-                            .addComponent(priceLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(q1Label)
+                        .addGap(63, 63, 63)
+                        .addComponent(enqueueQ1ListButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(enqueueQ2Button)
+                        .addGap(13, 13, 13)
+                        .addComponent(dequeueSelectedStockButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(clearQueueButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(StockNameLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addWatchListButton))))
+                        .addGap(6, 6, 6)
+                        .addComponent(q2Label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -576,9 +406,52 @@ public class StockGUI extends javax.swing.JFrame {
         equityList.setText(fullStockList.getEquity());
     }                                                    
 
-    private void addWatchListButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+    private void clearQueueButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        // Display q1_List with the stocks
+        for(int i = 0; i < fullStockList.getNumberOfStocks(); i++)
+        {
+            dlm2.addElement(stockQueue.dequeue());
+        } // end for
+        dlm2.removeAllElements();
+        q2_List.setModel(dlm2);
+    }                                                
 
-    }                                                  
+    private void dequeueSelectedStockButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                           
+        // Display q1_List with the stocks
+        dlm2.removeElement(stockQueue.dequeue());
+        dlm2.removeElement(q2_List.getSelectedValue());
+        q2_List.setModel(dlm2);
+    }                                                          
+
+    private void q1_ListMouseClicked(java.awt.event.MouseEvent evt) {                                     
+        // String selected = q1_List.getSelectedValue(); // make sure it gets converted string
+        // to give the selected item
+
+    }                                    
+
+    private void enqueueQ1ListButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+        // Create a defaultListModel
+        DefaultListModel dlm = new DefaultListModel();
+
+        // enqueue q1_List with every stock
+        for(int i = 0; i < fullStockList.getNumberOfStocks(); i++)
+        {
+            stockQueue.enqueue(fullStockList.getStockList()[i]);
+        } // end for
+
+        // Display q1_List with the stocks
+        for(int i = 0; i < fullStockList.getNumberOfStocks(); i++)
+        {
+            dlm.addElement(stockQueue.dequeue());
+        } // end for
+        q1_List.setModel(dlm);
+    }                                                   
+
+    private void enqueueQ2ButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        //DefaultListModel dlm2 = new DefaultListModel();
+        dlm2.addElement(q1_List.getSelectedValue());
+        q2_List.setModel(dlm2);
+    }                                               
 
     /**
      * @param args the command line arguments
@@ -616,21 +489,23 @@ public class StockGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JLabel StockNameLabel;
-    private javax.swing.JLabel TickerLabel;
     private javax.swing.JLabel WatchlistLabel;
-    private javax.swing.JButton addWatchListButton;
     private javax.swing.JButton clearButton;
+    private javax.swing.JButton clearQueueButton;
+    private javax.swing.JButton dequeueSelectedStockButton;
     private javax.swing.JTextPane displayTotalEquity;
     private javax.swing.JButton displayTotalEquityButton;
     private javax.swing.JScrollPane displayTotalEquityScrollPanel;
+    private javax.swing.JButton enqueueQ1ListButton;
+    private javax.swing.JButton enqueueQ2Button;
     private javax.swing.JTextArea equityList;
     private javax.swing.JScrollPane equityScrollPanel;
-    private javax.swing.JList<String> jPriceList;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JList<String> jTickerList;
-    private javax.swing.JLabel priceLabel;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel q1Label;
+    private javax.swing.JList<String> q1_List;
+    private javax.swing.JLabel q2Label;
+    private javax.swing.JList<String> q2_List;
     private javax.swing.JTextArea sharesList;
     private javax.swing.JScrollPane sharesScrollPanel;
     private javax.swing.JButton sortEquityButtonAsc;
