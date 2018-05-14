@@ -1,7 +1,6 @@
 package cis44project;
 
-public class Stock
-{
+public class Stock implements Comparable<Stock>{
     private String name;
     private String ticker;
     private double price;
@@ -57,10 +56,24 @@ public class Stock
         this.price = price;
     }
 
+    public void setShares(int numberOfShares)
+    {
+        this.numberOfShares = numberOfShares;
+    }
+
     public double getEquity()
     {
         return price * numberOfShares;
     }
+    public int compareTo(Stock other)
+    {
+        if(this.equals(other))
+            return 0;
+        else if(getPrice() > other.getPrice())
+            return 1;
+        else
+            return -1;
+    } // the lower the value, the higher the priority
 
     @Override
     public String toString()
